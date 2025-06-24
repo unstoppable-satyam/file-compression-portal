@@ -110,7 +110,7 @@ To get a local copy up and running, follow these simple steps.
 
 You can access a live-hosted version of this application here:
 
-[**https://file-compression-portal.onrender.com**](https://your-app-url.com)
+[**https://file-compression-portal.onrender.com**](https://file-compression-portal.onrender.com)
 
 ---
 
