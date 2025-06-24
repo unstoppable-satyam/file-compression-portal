@@ -1,96 +1,119 @@
-Data Compression & Decompression Portal
+<div align="center">
+  <h1 align="center">📊 Data Compression & Decompression Portal 📊</h1>
+  <p align="center">
+    <em>An interactive web tool to compress, decompress, and visually compare the performance of various data compression algorithms.</em>
+    <br />
+    <br />
+    <a href="[YOUR-DEPLOYED-LINK-HERE]"><strong>View Live Demo »</strong></a>
+  </p>
+</div>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Gunicorn-499848?style=for-the-badge&logo=gunicorn&logoColor=white" alt="Gunicorn">
+</p>
+
+---
+
+### 📝 About The Project
+
 This web application is a fully functional Data Compression & Decompression Portal built using Python and Flask. It allows users to upload any file (text, image, or binary), compress it using multiple industry-standard algorithms, and visualize the results. The portal provides a side-by-side comparison of the effectiveness and performance of different compression techniques, including Run-Length Encoding (RLE), LZ77 (via zlib), and Huffman coding. Users can also upload a previously compressed file to decompress it and retrieve the original data, byte-for-byte. The primary goal is to serve as an educational tool to demonstrate and compare the efficiency of various compression algorithms in a hands-on manner.
 
-✨ Features
-This application includes a comprehensive set of features to provide a complete and informative user experience:
+**(Here you can add a screenshot or a GIF of your project in action)**
+`![Project Demo GIF](link-to-your-demo.gif)`
 
-Universal File Upload: Users can upload any type of file, including text, images, and binary files, for compression.
+---
 
-Multiple Compression Algorithms: The portal supports three distinct compression algorithms for comparison:
+### ✨ Key Features
 
-Run-Length Encoding (RLE)
+* **📁 Universal File Handling**: Upload any file type—text, images, or raw binary data.
+* **🔬 Multi-Algorithm Comparison**: Simultaneously compress using **RLE**, **LZ77**, and **Huffman Coding**.
+* **🔄 Full Compression/Decompression Cycle**: Complete, lossless round-trip from original to compressed and back to the original file.
+* **📈 Detailed Performance Statistics**: Instantly view and compare:
+    * Original vs. Compressed File Size
+    * Compression Ratio
+    * Processing Time (in milliseconds)
+* **📊 Result Visualization**: A dynamic bar chart provides an immediate visual comparison of algorithm effectiveness.
+* **🎓 Educational Explanations**: In-app "Learn More" sections detail how each algorithm works, its pros, and its cons.
+* **🔗 Automated Extension Handling**: Intelligently preserves and restores the original file extension upon decompression.
+* **✅ Robust Error Handling**: Clear, user-friendly feedback for common errors.
 
-LZ77 (via zlib)
+---
 
-Huffman Coding
+### 🛠️ Tech Stack
 
-Compression & Decompression: Full end-to-end functionality to both compress original files and decompress the portal's processed files to retrieve the original.
+This project is built with a simple and powerful set of technologies:
 
-Detailed Compression Statistics: After compression, the application displays a detailed table with key performance metrics for each algorithm, including:
+* **Backend**:
+    * **Python**: The core programming language.
+    * **Flask**: A lightweight web framework for routing and handling requests.
+    * **Gunicorn**: A robust WSGI server for running the application in production.
+    * **Compression Libraries**:
+        * `zlib` (for LZ77)
+        * `dahuffman` (for Huffman Coding)
+* **Frontend**:
+    * **HTML5 & CSS3**: For structure and custom styling.
+    * **JavaScript**: For dynamic client-side interactions.
+    * **Chart.js**: For rendering the visualization chart.
 
-Original File Size
+---
 
-Compressed File Size
+### 🚀 Getting Started
 
-Compression Ratio
+To get a local copy up and running, follow these simple steps.
 
-Processing Time (in milliseconds)
+<details>
+  <summary><strong>Click to expand Setup Instructions</strong></summary>
+  
+  1.  **Clone the Repository**
+      ```sh
+      git clone <your-github-repository-link>
+      cd compression_portal
+      ```
 
-Download Functionality: Users can download both the compressed files and the final decompressed files.
+  2.  **Create and Activate a Virtual Environment**
+      Using a virtual environment is highly recommended to manage dependencies cleanly.
+      ```sh
+      # For Windows
+      python -m venv venv
+      venv\Scripts\activate
+      
+      # For macOS/Linux
+      python3 -m venv venv
+      source venv/bin/activate
+      ```
 
-In-App Algorithm Explanations: The results page features expandable sections that provide brief, user-friendly descriptions of how each algorithm works, its strengths, and its weaknesses, fulfilling the educational goal of the project.
+  3.  **Install Dependencies**
+      This project's dependencies are listed in `requirements.txt`.
+      ```sh
+      pip install -r requirements.txt
+      ```
 
-Result Visualization: A dynamic bar chart on the results page provides an immediate visual comparison of the file sizes produced by each algorithm against the original.
+  4.  **Run the Flask Application**
+      This command starts the local development server.
+      ```sh
+      python app.py
+      ```
 
-Robust Error Handling: The application provides user-friendly feedback for common errors, such as failing to upload a file or attempting to decompress an invalid file format.
+  5.  **Open in Browser**
+      Navigate to the following address in your web browser:
+      <http://127.0.0.1:5000>
+</details>
 
-Automated Extension Handling: The portal intelligently packages the original file extension into the compressed filename and automatically restores it upon decompression, providing a seamless user experience.
+---
 
-🛠️ Tech Stack Used
-Backend: Python
+### 🌐 Live Demo
 
-Web Framework: Flask
-
-Compression Libraries: zlib (for LZ77), dahuffman (for Huffman Coding), custom implementation for RLE.
-
-Frontend:
-
-HTML5
-
-CSS3 (for custom styling)
-
-JavaScript
-
-Visualization Library: Chart.js
-
-Production Server: Gunicorn
-
-🚀 Setup Instructions to Run Locally
-To set up and run this project on your local machine, please follow these steps:
-
-1. Clone the Repository
-git clone <your-github-repository-link>
-cd compression_portal
-
-2. Create a Virtual Environment (Recommended)
-It's best practice to create a virtual environment to manage project dependencies.
-
-For Windows:
-
-python -m venv venv
-venv\Scripts/activate
-
-For macOS/Linux:
-
-python3 -m venv venv
-source venv/bin/activate
-
-3. Install Dependencies
-The required Python libraries are listed in the requirements.txt file. Install them using pip:
-
-pip install -r requirements.txt
-
-4. Run the Application
-Once the dependencies are installed, you can start the Flask development server:
-
-python app.py
-
-5. Access the Portal
-The server will start and be running in debug mode. You can access the web application by opening your web browser and navigating to:
-
-http://127.0.0.1:5000
-
-🌐 Deployed Demo Link
 You can access a live-hosted version of this application here:
 
-[Your Deployed Link Here]
+[**[Your Deployed Link Here]**](https://your-app-url.com)
+
+---
+
+### 📜 License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
