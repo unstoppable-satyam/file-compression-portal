@@ -1,0 +1,360 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Compression Comparison Results</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        h2 {
+            color: #27ae60;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #34495e;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #2ecc71;
+        }
+
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .home-btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Results for '{{ original_filename }}'</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Original Size</th>
+                    <th>Compressed Size</th>
+                    <th>Ratio</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+                    <td><strong>{{ result.algorithm }}</strong></td>
+                    <td>{{ result.original_size }}</td>
+                    <td>{{ result.compressed_size }}</td>
+                    <td>{{ result.compression_ratio }}</td>
+                    <td>
+                        <a href="{{ url_for('download_compressed_file', filename=result.download_filename) }}"
+                            class="btn btn-success">Download</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="home-btn-container">
+            <a href="/" class="btn btn-primary">Compress Another File</a>
+        </div>
+    </div>
+</body>
+
+</html> -->
+
+
+
+<!-- version 2 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Compression Comparison Results</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        h2 {
+            color: #27ae60;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #34495e;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #2ecc71;
+        }
+
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .home-btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        details {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        summary {
+            cursor: pointer;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .explanation {
+            color: #555;
+            margin-top: 8px;
+            text-align: left;
+        }
+
+        #chart-container {
+            width: 100%;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Results for '{{ original_filename }}'</h2>
+        <p>The table below shows the detailed statistics. Lower compressed size is better.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Original Size</th>
+                    <th>Compressed Size</th>
+                    <th>Ratio</th>
+                    <th>Processing Time</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+                    <td>
+                        <strong>{{ result.algorithm }}</strong>
+                        <details>
+                            <summary>Learn More</summary>
+                            <div class="explanation">
+                                {% if result.algorithm == 'RLE' %}
+                                <strong>How it works:</strong> Replaces sequences of identical bytes (runs) with a count
+                                and a single byte value. <br>
+                                <strong>Best for:</strong> Simple images or files with low complexity and long repeating
+                                sections. <br>
+                                <strong>Worst for:</strong> Complex data with no runs, where it can increase file size.
+                                {% elif result.algorithm == 'LZ77' %}
+                                <strong>How it works:</strong> A "sliding window" algorithm that replaces repeated
+                                sequences of data with a reference (a distance and length pointer) to a previous
+                                occurrence. <br>
+                                <strong>Best for:</strong> General purpose compression. It's the basis for many formats
+                                like ZIP, Gzip, and PNG.
+                                {% elif result.algorithm == 'HUFFMAN' %}
+                                <strong>How it works:</strong> Assigns variable-length codes to bytes based on their
+                                frequency; frequent bytes get short codes, and infrequent bytes get long codes. <br>
+                                <strong>Best for:</strong> Text or any data with a non-uniform byte distribution.
+                                {% endif %}
+                            </div>
+                        </details>
+                    </td>
+                    <td>{{ result.original_size }}</td>
+                    <td>{{ result.compressed_size }}</td>
+                    <td>{{ result.compression_ratio }}</td>
+                    <td>{{ result.processing_time }}</td>
+                    <td>
+                        <a href="{{ url_for('download_compressed_file', filename=result.download_filename) }}"
+                            class="btn btn-success">Download</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div id="chart-container">
+            <h3>Size Comparison (in Bytes)</h3>
+            <canvas id="compressionChart"></canvas>
+        </div>
+
+        <div class="home-btn-container">
+            <a href="/" class="btn btn-primary">Compress Another File</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chartLabels = JSON.parse('{{ chart_labels | safe }}');
+            const chartData = JSON.parse('{{ chart_data | safe }}');
+
+            const ctx = document.getElementById('compressionChart').getContext('2d');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: chartLabels,
+                    datasets: [{
+                        label: 'File Size in Bytes',
+                        data: chartData,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(255, 206, 86, 0.5)',
+                            'rgba(75, 192, 192, 0.5)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function (value, index, values) {
+                                    return value.toLocaleString() + ' Bytes';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

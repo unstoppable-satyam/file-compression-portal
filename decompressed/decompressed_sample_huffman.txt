@@ -1,0 +1,1 @@
+Could not decompress Huffman data without the original code table.
