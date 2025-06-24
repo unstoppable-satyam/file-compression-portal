@@ -24,7 +24,7 @@
 This web application is a fully functional Data Compression & Decompression Portal built using Python and Flask. It allows users to upload any file (text, image, or binary), compress it using multiple industry-standard algorithms, and visualize the results. The portal provides a side-by-side comparison of the effectiveness and performance of different compression techniques, including Run-Length Encoding (RLE), LZ77 (via zlib), and Huffman coding. Users can also upload a previously compressed file to decompress it and retrieve the original data, byte-for-byte. The primary goal is to serve as an educational tool to demonstrate and compare the efficiency of various compression algorithms in a hands-on manner.
 
 **(Here you can add a screenshot or a GIF of your project in action)**
-`![image](https://github.com/user-attachments/assets/1c43fe58-bfa7-4e97-8a81-0232af7d106c)`
+![image](https://github.com/user-attachments/assets/1c43fe58-bfa7-4e97-8a81-0232af7d106c)
 
 `![Project Demo GIF](link-to-your-demo.gif)`
 
