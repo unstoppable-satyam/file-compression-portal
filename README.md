@@ -71,7 +71,7 @@ To get a local copy up and running, follow these simple steps.
   
   1.  **Clone the Repository**
       ```sh
-      git clone <your-github-repository-link>
+      git clone [your-github-repository-link](https://github.com/unstoppable-satyam/file-compression-portal.git)]
       cd compression_portal
       ```
 
