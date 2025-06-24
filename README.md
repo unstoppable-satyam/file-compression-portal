@@ -72,7 +72,7 @@ To get a local copy up and running, follow these simple steps.
   1.  **Clone the Repository**
       ```sh
       git clone https://github.com/unstoppable-satyam/file-compression-portal.git
-      cd compression_portal
+      cd file-compression-portal 
       ```
 
   2.  **Create and Activate a Virtual Environment**
