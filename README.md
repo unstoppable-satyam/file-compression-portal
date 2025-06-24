@@ -4,7 +4,7 @@
     <em>An interactive web tool to compress, decompress, and visually compare the performance of various data compression algorithms.</em>
     <br />
     <br />
-    <a href="[YOUR-DEPLOYED-LINK-HERE]"><strong>View Live Demo »</strong></a>
+    <a href="https://file-compression-portal.onrender.com"><strong>View Live Demo »</strong></a>
   </p>
 </div>
 
