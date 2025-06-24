@@ -110,7 +110,7 @@ To get a local copy up and running, follow these simple steps.
 
 You can access a live-hosted version of this application here:
 
-[**[Your Deployed Link Here]**](https://your-app-url.com)
+[**[https://meet.google.com/vax-usiu-hvh]**](https://your-app-url.com)
 
 ---
 
