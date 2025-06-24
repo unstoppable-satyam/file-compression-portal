@@ -68,7 +68,7 @@ It's best practice to create a virtual environment to manage project dependencie
 For Windows:
 
 python -m venv venv
-venv\Scripts\activate
+venv\Scripts/activate
 
 For macOS/Linux:
 
