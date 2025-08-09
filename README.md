@@ -114,6 +114,3 @@ You can access a live-hosted version of this application here:
 
 ---
 
-### 📜 License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
